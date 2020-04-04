@@ -12,7 +12,7 @@ namespace QueueImplementation
             System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\abhatia\source\repos\QueueImplementation\QueueImplementation\TextFile1.txt");
             string line;
             int counter = 0;
-            int dequeudint = 0;
+            object dequeudobj = 0;
 
             try
             {
@@ -21,13 +21,13 @@ namespace QueueImplementation
                 {
 
                     Console.WriteLine(line);
-                    queue.Enqueue(int.Parse(line));
+                    queue.Enqueue((object)line);
 
                 }
 
 
                 Console.WriteLine("Starting to Read Queue");
-                int[] copyofqueue = queue.ReturnQueue();
+                object[] copyofqueue = queue.ReturnQueue();
                 for (int entry = 0; entry < copyofqueue.Length; entry++)
                 {
                     Console.WriteLine(copyofqueue[entry].ToString());
@@ -39,8 +39,8 @@ namespace QueueImplementation
                 counter = 0;
                 do
                 {
-                    dequeudint = queue.DeQueue();
-                    Console.WriteLine(dequeudint.ToString());
+                    dequeudobj = queue.DeQueue();
+                    Console.WriteLine(dequeudobj.ToString());
                     counter++;
                 }
                 while (counter <= copyofqueue.Length);

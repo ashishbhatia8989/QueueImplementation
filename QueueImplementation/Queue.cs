@@ -8,7 +8,7 @@ namespace QueueImplementation
     class Queue
     {
         private const int DefaultQueueSize = 10;
-        private int[] data;
+        private object[] data;
         private int head = 0, tail = 0;
         private int numElements = 0;
 
@@ -17,14 +17,14 @@ namespace QueueImplementation
 
         public Queue()
         {
-            this.data = new int[DefaultQueueSize];
+            this.data = new object[DefaultQueueSize];
         }
 
         public Queue(int size)
         {
             if (size > 0)
             {
-                this.data = new int[size];
+                this.data = new object[size];
             }
             else
             {
@@ -32,7 +32,7 @@ namespace QueueImplementation
             }
         }
 
-        public void Enqueue(int item)
+        public void Enqueue(object item)
         {
             if (this.numElements == data.Length)
             {
@@ -44,19 +44,19 @@ namespace QueueImplementation
             this.numElements++;
         }
 
-        public int[] ReturnQueue()
+        public object[] ReturnQueue()
         {
             return this.data;
         }
 
-        public int DeQueue()
+        public object DeQueue()
         {
             if (this.numElements == 0)
             {
                 throw new Exception("Queue Empty");
             }
 
-            int queueitem = this.data[this.tail];
+            object queueitem = this.data[this.tail];
             this.tail++;
             //this.tail %= this.tail % this.data.Length;
             this.numElements--;
