@@ -5,10 +5,10 @@ using System.Text;
 
 namespace QueueImplementation
 {
-    class Queue
+    class Queue<T>
     {
         private const int DefaultQueueSize = 10;
-        private object[] data;
+        private T[] data;
         private int head = 0, tail = 0;
         private int numElements = 0;
 
@@ -17,14 +17,14 @@ namespace QueueImplementation
 
         public Queue()
         {
-            this.data = new object[DefaultQueueSize];
+            this.data = new T[DefaultQueueSize];
         }
 
         public Queue(int size)
         {
             if (size > 0)
             {
-                this.data = new object[size];
+                this.data = new T[size];
             }
             else
             {
@@ -32,7 +32,7 @@ namespace QueueImplementation
             }
         }
 
-        public void Enqueue(object item)
+        public void Enqueue(T item)
         {
             if (this.numElements == data.Length)
             {
@@ -44,19 +44,19 @@ namespace QueueImplementation
             this.numElements++;
         }
 
-        public object[] ReturnQueue()
+        public T[] ReturnQueue()
         {
             return this.data;
         }
 
-        public object DeQueue()
+        public T DeQueue()
         {
             if (this.numElements == 0)
             {
                 throw new Exception("Queue Empty");
             }
 
-            object queueitem = this.data[this.tail];
+            T queueitem = this.data[this.tail];
             this.tail++;
             //this.tail %= this.tail % this.data.Length;
             this.numElements--;
